@@ -1,0 +1,9 @@
+class Solution {
+    public boolean power(int n){
+        long i = 1;
+        while(i<n){
+            i = i*2;
+        }return i == n;}
+    public boolean isPowerOfTwo(int n) {
+        return  power(n);}   
+}
