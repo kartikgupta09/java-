@@ -1,0 +1,29 @@
+class Solution {
+    private boolean isvowel(char[] arr , int idx  ){
+         if(arr[idx] == 'A' ||arr[idx] == 'a' ||arr[idx] == 'E' ||arr[idx] == 'e' ||arr[idx] == 'I' ||arr[idx] == 'i' ||arr[idx] == 'O' ||arr[idx] == 'o' ||arr[idx] == 'U' ||arr[idx] == 'u') return true;
+        else return false;
+    }
+    public void swap(char[] arr , int low ,int high){
+        char temp = arr[low];
+        arr[low] = arr[high];
+        arr[high] = temp;
+    }
+    
+    public String reverseVowels(String s) {
+        char[] arr = s.toCharArray();
+    int low = 0;
+    int high = s.length() -1;
+        while(low<high){
+            while(low<high && isvowel(arr,low) == false)  low++;
+            while(low<high && isvowel(arr,high) == false)  high--;
+            swap(arr,low,high);
+            low++;
+            high--;
+        }
+        String str ="";
+        for(char ch : arr){
+            str += ch;
+        }
+        return  str;
+        }
+}
