@@ -1,0 +1,25 @@
+class Solution {
+    public TreeNode addOneRow(TreeNode root, int val, int depth) {
+        if(depth == 1){
+            TreeNode node = new TreeNode(val);
+            node.left = root;
+            return node;
+        }
+        helper(root,val,depth,1);
+        return root;
+    }
+    public void helper(TreeNode node , int val,int depth,int currdepth){
+        if(node == null){
+            return;
+        }if(currdepth == depth-1){
+            TreeNode temp = node.left;
+            node.left = new TreeNode(val);
+            node.left.left = temp;
+            TreeNode Temp = node.right;
+            node.right = new TreeNode(val);
+            node.right.right = Temp;
+        }
+        helper(node.left,val,depth,currdepth+1);
+        helper(node.right,val,depth,currdepth+1);
+    }
+}
