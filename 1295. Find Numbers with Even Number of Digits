@@ -1,0 +1,23 @@
+class Solution {
+    public int findNumbers(int[] nums) {
+        int count = 0;
+        for(int num: nums){
+            if(even(num)){
+                count++;
+            }
+        }
+        return count;
+    }
+    private static boolean even(int num){
+        int numofdigit = evennum(num);
+        return numofdigit % 2 == 0;
+    } 
+    static int evennum(int num){
+        int count1 = 0;
+        while(num>0){
+            count1++;
+            num = num /10;
+        }
+        return count1;
+    }
+}
