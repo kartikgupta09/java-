@@ -1,0 +1,19 @@
+class Solution {
+    public int peakIndexInMountainArray(int[] arr) {
+        int start = 0;
+        int end = arr.length-1;
+        while(start<end){
+            int mid = start+(end-start)/2;
+            //middle element is greater than the next mid+1 element then we are heading to decreasing array.
+            // soo make end = mid.
+            if(arr[mid]>arr[mid+1]){
+                end = mid;
+            }
+            //else condition search in mid+1 to end  as the we are in ascending array.
+            else{
+                start = mid+1;
+            }
+        }
+        return start;
+    }
+}
