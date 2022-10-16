@@ -1,0 +1,64 @@
+/**
+ * // This is MountainArray's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface MountainArray {
+ *     public int get(int index) {}
+ *     public int length() {}
+ * }
+ */
+ 
+class Solution {
+    public int findInMountainArray(int target, MountainArray mountainArr) {
+       int peak = findingpeak( mountainArr);
+       //first searching in ascending array
+       //if not found 
+       //searching in descending array.
+        int firstans = orderdiagnostic(mountainArr,0,peak,target);
+        if(firstans != -1){
+            return firstans;
+        }
+        return orderdiagnostic(mountainArr,peak+1,mountainArr.length()-1,target);
+        
+    }
+    
+    public int orderdiagnostic(MountainArray mountainArr,int start,int end , int target){
+            boolean ascending = mountainArr.get(start)<mountainArr.get(end);
+            while(start<=end){
+                int mid = start+(end-start)/2;
+                if(mountainArr.get(mid) == target){
+                    return mid;
+                }
+                //searching in ascen.
+                if(ascending == true){
+                    if(mountainArr.get(mid) < target){
+                        start = mid+1;
+                    }else{
+                        end = mid-1;
+                    }
+                }
+                //searching in Dec array.
+                else{
+                    if(mountainArr.get(mid) > target){
+                        start = mid+1;
+                    }else{
+                        end = mid-1;
+                    }
+                }
+            }
+            return -1;
+    }
+    //finding the peak of the array.
+   public int findingpeak( MountainArray mountainArr){
+        int start = 0;
+        int end = mountainArr.length()-1;
+        while(start<end){
+            int mid = start+(end-start)/2;
+            if( mountainArr.get(mid) >  mountainArr.get(mid+1)){
+                end = mid;
+            }else{
+                start = mid+1;
+            }
+        }
+       return start;
+   }
+}
