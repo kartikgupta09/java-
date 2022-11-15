@@ -1,0 +1,31 @@
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        Stack<Character> st = new Stack<>();
+        for(char ch : s.toCharArray()){
+            if(ch != '#'){
+                st.push(ch);
+            }else if(!st.isEmpty()){
+                st.pop();
+            }
+        }
+        //if current character is equal to '#' then we are popping the element from the stack.
+        //if stack 2 is not empty then we are checking that the popping element is equal to the current element..
+        //..then we are treturning true else return false.
+        Stack<Character> st2 = new Stack<>();
+        for(char ch:t.toCharArray()){
+            if(ch != '#'){
+                st2.push((ch));
+            }else if(!st2.isEmpty()){
+                st2.pop();
+            }
+        }
+        while(!st.isEmpty()){
+            char curr = st.pop();
+            if(st2.isEmpty() || st2.pop() != curr){
+                return false;
+            }
+        }
+        checking that the stack is empty or not .
+        return st.isEmpty() && st2.isEmpty();
+    }
+}
