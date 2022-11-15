@@ -1,0 +1,46 @@
+class MyQueue {
+    Stack<Integer> s ;
+    Stack<Integer> s1;
+
+    public MyQueue() {
+        s = new Stack<>();
+        s1 = new Stack<>();
+        
+    }
+    
+    public void push(int x) {
+        s.push(x);
+    }
+    //if s1 is empty then push elements from s to s1.
+    after that popping an dpeeking the element from s1 only because the first  element from s is first element in s and so on following the sequence.
+    public int pop() {
+        if(s1.isEmpty()){
+            while(!s.isEmpty()){
+                s1.push(s.pop());
+            }
+        }
+        return s1.pop();
+    }
+    
+    public int peek() {
+        if(s1.isEmpty()){
+            while(!s.isEmpty()){
+                s1.push(s.pop());
+            }
+        }
+        return s1.peek();
+    }
+    //checking whether the stack is empty or not
+    public boolean empty() {
+        return s.isEmpty() && s1.isEmpty();
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
