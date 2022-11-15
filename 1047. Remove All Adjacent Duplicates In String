@@ -1,0 +1,19 @@
+class Solution {
+    public String removeDuplicates(String s) {
+        Stack<Character> st = new Stack<>();
+        StringBuilder b = new StringBuilder();
+        
+        for(int i =0;i<s.length();i++){
+            if(!st.isEmpty() && st.peek() == s.charAt(i)){
+                st.pop();
+            }else{
+                st.push(s.charAt(i));
+            }
+        }
+        popping the element from the stack and then appending the elements to sb(stringbuilder).
+        while(!st.isEmpty()){
+            b.append(st.pop());
+        }
+        return b.reverse().toString();//reversing the stringbuilder and then afetr converting to string.
+    }
+}
