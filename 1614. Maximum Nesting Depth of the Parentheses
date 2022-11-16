@@ -1,0 +1,17 @@
+class Solution {
+    public int maxDepth(String s) {
+    //inititalizing depth count and the count of opening parenthesis..
+    //then subtracting the count of opening with the closing parenthesis...
+    //after that calculating the max of both and then returning the max integer.
+        int countDepth = 0;
+        int openParen = 0;
+        for(char ch : s.toCharArray()){
+            if(ch == '(')
+                openParen++;
+            if(ch == ')')
+                openParen--;
+            countDepth = Math.max(countDepth,openParen);
+        }
+        return countDepth;
+    }
+}
