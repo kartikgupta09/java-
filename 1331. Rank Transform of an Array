@@ -1,0 +1,24 @@
+class Solution {
+    public int[] arrayRankTransform(int[] arr) {
+    // creating a copy of an array.
+    // after that sorting the copy array.
+        int[] copyArr = new int[arr.length];
+        for(int i = 0;i<arr.length;i++){
+            copyArr[i] = arr[i];
+        }
+    // created a hashmap and calculating the rank of element of sorted array 
+    // rank will increase according to the size of an array so map.size()+1.
+        Map<Integer,Integer> map = new  HashMap<>();
+        Arrays.sort(copyArr);
+    // finding the element in the hashmap according to the sequence 
+    // in the original array and getting the rank according to the sequence in  original array.
+        for(int num : copyArr){
+            if(!map.containsKey(num))
+                map.put(num,map.size()+1);
+        }
+        for(int i=0;i<arr.length;i++){
+            arr[i] = map.get(arr[i]);
+        }
+        return arr;
+    }
+}
