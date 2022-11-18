@@ -1,0 +1,21 @@
+//leetcode daily challenge november.
+//ugly number will be in the form (2^a*3^b*5^c)
+// if will be divisible n=by 2 and 3 and 5.
+// if num == 1 then by default return will be 1 only ..
+
+class Solution {
+    public boolean isUgly(int n) {
+        if(n<1)
+            return false;
+// checking the divisibility by 2.
+        while(n%2==0)
+            n/=2;
+// checking the divisibility by 3.
+        while(n%3==0)
+            n/=3;
+ // checking the divisibility by 5.
+        while(n%5==0)
+            n/=5;
+        return n == 1;
+    }
+}
