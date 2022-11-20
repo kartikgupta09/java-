@@ -1,0 +1,61 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode sortList(ListNode head) {
+    // if zero node and only one is present then return the node itself..
+        if(head == null || head.next == null){
+            return head;
+        }
+        // finding the middle by calling the middle function..
+        ListNode mid  = middle(head);
+        // sorting the first half..
+        ListNode left = sortList(head);
+        // sorting the second half of the list..
+        ListNode right = sortList(mid);
+        // now comparing and merging both the list ..l1 and l2.. or left one and right one..
+        return merge(left,right);
+    }
+    // creating the function to find the middle element of the list..
+    static ListNode middle(ListNode head){
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        // breaking the connection of the slow pointer with next after finding 
+        // the just element after the middle..
+        ListNode mid = slow.next;
+        slow.next = null;
+        return mid;
+    }
+    // function for merging both the list
+    static ListNode merge(ListNode l1, ListNode l2){
+        ListNode temp = new ListNode(-1);
+        ListNode dummy = temp;
+        while(l1 != null && l2 != null){
+            if(l1.val<l2.val){
+                dummy.next = l1;
+                l1 = l1.next;
+            }else{
+                dummy.next = l2;
+                l2 = l2.next;
+            }
+            dummy = dummy.next;
+        }
+        if(l1!= null){
+            dummy.next = l1;
+        }else{
+            dummy.next = l2;
+        }
+        return temp.next;
+    }
+}
