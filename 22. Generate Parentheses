@@ -1,0 +1,26 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+    // creating the list which we have to return ...
+        List<String> list = new ArrayList();
+        // calling the helper for performing the function again\
+        //(recursion)..
+        helper(1,0,"(",list,n);
+        return list;
+    }
+    static void helper(int open,int clos,String curr,List<String> list,int n){
+    the length of the string will always be double of the input value because the ..
+    // length of the opening brackets + length of the closing brackets..
+        if(curr.length() == 2*n){
+            list.add(curr);
+            return;
+        }
+        //adding the opening bracket to the string and increasing the length by 1...
+        if(open<n){    
+            helper(open+1,clos,curr+"(", list,n);
+        }
+        // adding the closing bracket to the string and again increase it by 1...
+        if(clos<open){
+            helper(open,clos+1,curr+")",list,n);
+        }
+    }
+}
