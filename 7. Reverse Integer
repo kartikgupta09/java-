@@ -1,0 +1,20 @@
+class Solution {
+    public int reverse(int x) {
+        int rev = 0;
+        while(x != 0){
+            int digit = x % 10;
+            x = x/10;
+            // checking the uppper limit .. for full filling the condition...
+            if(rev > Integer.MAX_VALUE/10 || (digit > Integer.MAX_VALUE%10 && rev == Integer.MAX_VALUE/10)){
+                return 0;
+            }
+            // checking the lower limit for full filling the condition...
+            if(rev < Integer.MIN_VALUE/10 || digit < Integer.MAX_VALUE % 10 && rev == Integer.MAX_VALUE/10){
+                return 0;
+            }
+            // output for the reverse the number...
+            rev = rev*10 + digit;
+        }
+        return rev;
+    }
+}
