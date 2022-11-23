@@ -1,0 +1,22 @@
+class Solution {
+    public boolean isSameAfterReversals(int num) {
+        int rev1 = 0;
+        int temp = num;
+        int rev2 = 0;
+        // reversing the original number..
+        while(temp != 0){
+            int digit1 = temp%10;
+            temp = temp/10;
+            rev1 = rev1*10+digit1;
+        }
+        // reversing the number which we have reversed..
+        while(rev1 != 0){
+            int digit2 = rev1 % 10;
+            rev1 = rev1 / 10;
+            rev2 = rev2*10+digit2;
+        }
+        // compairing the number second time reverse one with the original number..
+        // if equals then return true else return false...
+        return num == rev2;
+    }
+}
