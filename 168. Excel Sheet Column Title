@@ -1,0 +1,18 @@
+class Solution {
+    public String convertToTitle(int n) {
+    // creating a stringbuilder ..
+        StringBuilder sb = new StringBuilder();
+        // terminate loop as the value of the integer become 0 or smaller..
+        while(n>0){
+        // z should hold the value 27...so n--..
+            n--;
+        // convering int value to char 
+            char c = (char)('A'+n%26);
+            n/=26;
+            sb.append(c);
+        }
+        // reversing the sb ..
+        sb.reverse();
+        return sb.toString();
+    }
+}
