@@ -1,0 +1,13 @@
+class Solution {
+    public boolean findSubarrays(int[] nums) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int n = nums.length;
+        for(int i=1;i<n;i++){
+            if(map.containsKey(nums[i-1]+nums[i])){
+                return true;
+            }
+            map.put(nums[i-1]+nums[i],i);
+        }
+        return false;
+    }
+}
