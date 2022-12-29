@@ -1,0 +1,15 @@
+class Solution {
+    public boolean canConstruct(String s1, String s2) {
+        int[] count = new int[26];
+        for(char ch:s2.toCharArray()){
+            count[ch-'a']++;
+        }
+        for(char ch: s1.toCharArray()){
+            if(count[ch-'a'] == 0){
+                return false;
+            }
+            count[ch-'a']--;
+        }
+        return true;
+    }
+}
