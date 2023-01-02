@@ -1,0 +1,36 @@
+class Solution {
+    public int search(int[] nums, int target) {
+        int n = nums.length;
+        /*int low =0;
+        int high = n-1;
+        while(low<=high){
+            int mid = low+(high-low)/2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            if(nums[0]<=nums[mid]){
+                /*left half sorted*/
+                if(target>=nums[0] && target<=nums[mid]){
+                    high = mid-1;
+                }else{
+                    low = mid+1;
+                }
+            }
+            else{
+                /*right half sorted*/
+                if(target>nums[mid] && target<=nums[high]){
+                    low = mid+1;
+                }else{
+                    high = mid-1;
+                }
+            }
+        }
+        return -1;*/
+        for(int i=0;i<n;i++){
+            if(nums[i]==target){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
