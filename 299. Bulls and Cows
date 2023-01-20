@@ -1,0 +1,21 @@
+class Solution {
+    public String getHint(String secret, String guess) {
+        int bull =0;
+        int cows= 0;
+        int[] fre1 = new int[10];
+        int[] fre2 = new int[10];
+        for(int i=0;i<secret.length();i++){
+            if(secret.charAt(i)==guess.charAt(i)){
+                bull++;
+            }
+            else{
+                fre1[secret.charAt(i)-'0']++;
+                fre2[guess.charAt(i)-'0']++;
+            }
+        }
+        for(int i=0;i<10;i++){
+            cows+=Math.min(fre1[i],fre2[i]);
+        }
+        return bull+"A"+cows+"B";
+    }
+}
