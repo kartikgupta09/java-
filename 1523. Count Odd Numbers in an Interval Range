@@ -1,0 +1,13 @@
+class Solution {
+    public int countOdds(int low, int high) {
+        int start = low;
+        int ans=0;
+        if(start%2==0){
+            start++;
+        }while(start<=high){
+            ans++;
+            start+=2;
+        }
+        return ans;
+    }
+}
