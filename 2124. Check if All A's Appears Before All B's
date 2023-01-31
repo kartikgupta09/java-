@@ -1,0 +1,21 @@
+class Solution {
+    public boolean checkString(String s) {
+        int n = s.length();
+        if(n==1){
+            return true;
+        }
+        char[] ch = s.toCharArray();
+        for(int i=0;i<ch.length-1;i++){
+            for(int j=i+1;j<ch.length;j++){
+                if(ch[j]=='b'&&ch[i]=='a' || ch[j]=='a'&&ch[i]=='a'){
+                    continue;
+                }else if(ch[j]=='b'&&ch[i]=='b' ){
+                    continue;
+                }else{
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
