@@ -1,0 +1,31 @@
+class Solution {
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        HashSet<Integer> s1 = new HashSet<>();
+        HashSet<Integer> s2 = new HashSet<>();
+        for(int n:nums1){
+            s1.add(n);
+        }
+        for(int n:nums2){
+            s2.add(n);
+        }
+        Set<Integer> s3 = new HashSet<>();
+
+        for(int n:nums1){
+            if(!s2.contains(n)){
+                s3.add(n);
+            }
+        }
+        Set<Integer> s4 = new HashSet<>();
+        for(int n:nums2){
+            if(!s1.contains(n)){
+                s4.add(n);
+            }
+        }
+        List<Integer> l1 = new ArrayList<>();
+        List<Integer> l2 = new ArrayList<>();
+        l1.addAll(s3);
+        l2.addAll(s4);
+        return Arrays.asList(l1,l2);
+        
+    }
+}
