@@ -1,0 +1,14 @@
+class Solution {
+    public int pivotInteger(int n) {
+        int tsum = n*(n+1)/2;
+        for(int i=1;i<=n;i++){
+            int lsum = i*(i+1)/2;
+            int rsum = tsum - i*(i-1)/2;
+            lsum = i*(i+1)/2;
+            if(lsum == rsum){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
